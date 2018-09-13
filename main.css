@@ -1,10 +1,17 @@
+html, body {
+  height: 100%;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
 body {
   text-align : center;
 }
+
 canvas {
   display : block;
-  width : 280px;
-  height : 210px;
+  width : 100%;
+  height : calc(100vh - 50px);
   margin : auto;
   padding : 0;
   border : none;
