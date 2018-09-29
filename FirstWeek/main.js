@@ -12,11 +12,11 @@ function setupAnimation(evt) {
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
     /**
-     * canvas에서 webgl context를 가져온다.
-     * 만약 가져오지 못한다면 experimental-webgl을 가져온다.
-     * 자바스크립트의 || 특성을 이용한 방식 ||문 앞이 undefined아면 뒤 구문을 가져간다.
+     * canvas 에서 webgl context 를 가져온다.
+     * 만약 가져오지 못한다면 experimental-webgl 을 가져온다.
+     * 자바스크립트의 || 특성을 이용한 방식 ||문 앞이 undefined 아면 뒤 구문을 가져간다.
      * 
-     * webgl 미 지원시 p태그를 가져와서 로두 살패를 알림.
+     * webgl 미 지원시 p 태그를 가져와서 로두 살패를 알림.
      */
     gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     if (!gl) {
@@ -26,7 +26,7 @@ function setupAnimation(evt) {
     }
     /**
      * gl.viewport gl의 해상도를 지정 그러나 랜더링 해상도가 올라가지 않는다.
-     * 좌표 0, 0 부터 canvas실제 랜더링 크기만금 지정한다.
+     * 좌표 0, 0 부터 canvas 실제 랜더링 크기만금 지정한다.
      * gl.clearColor(red, green, blue, alpha); 색상을 초기화 한다.
      * gl.clear 버퍼를 초기화하여 사전 설정값으로 설정합니다.
      * gl.COLOR_BUFFER_BIT   gl.DEPTH_BUFFER_BIT   gl.STENCIL_BUFFER_BIT

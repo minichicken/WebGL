@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <title>WebGLSL</title>
 </head>
 <body>
+<p class="title">Hello WebGLSL World!!!</p>
+<canvas>브라우져에서 HTML Canvas 를 지원하지 않습니다.</canvas>
+<script type="x-shader/x-vertex" id="vertex-shader">
+#version 100
 
+void main() {
+    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+    gl_PointSize = 64.0;
+}
+
+</script>
+<script type="x-shader/x-fragment" id="fragment-shader">
+#version 100
+void main() {
+    gl_FragColor = vec4(1.0, 0.54, 0.34, 1.0);
+}
+
+</script>
+<script src="main.js"></script>
 </body>
 </html>
