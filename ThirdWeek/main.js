@@ -78,8 +78,13 @@ function setupWebGL(evt) {
         paragraph.innerHTML = "Shader program 연결에 실패 하였습니다. Error log: " + linkErrLog;
         return;
     }
-
-    initializeAttributes();
+    /**
+     * initializeAttributes
+     */
+    gl.enableVertexAttribArray(0);
+    buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.vertexAttribPointer(0, 1, gl.FLOAT, false, 0, 0);
     /**
      * 프로그램을 사용한다.
      * 그리고 그린다.
@@ -90,13 +95,6 @@ function setupWebGL(evt) {
 
     // gl 종료
     cleanup();
-}
-
-function initializeAttributes() {
-    gl.enableVertexAttribArray(0);
-    buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.vertexAttribPointer(0, 1, gl.FLOAT, false, 0, 0);
 }
 
 /**
