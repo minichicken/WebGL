@@ -1,5 +1,8 @@
 let gl: WebGLRenderingContext | null, program: WebGLProgram | null, buffer: WebGLBuffer | null;
 
+const paragraph = document.querySelector("p") as HTMLParagraphElement;
+const canvas = document.querySelector("canvas") as HTMLCanvasElement;
+
 window.addEventListener("load", setupWebGL, false);
 
 function setupWebGL(evt: Event): void {
@@ -9,8 +12,6 @@ function setupWebGL(evt: Event): void {
      * canvas 객체의 크기를 실제 브라우져에서 보이는 크기로 지정한다.
      */
     window.removeEventListener(evt.type, setupWebGL, false);
-    let paragraph = document.querySelector("p") as HTMLParagraphElement;
-    let canvas = document.querySelector("canvas") as HTMLCanvasElement;
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
     /**
@@ -47,8 +48,7 @@ function setupWebGL(evt: Event): void {
      * gl 에 연결 되었으므로 프로그램에서 shader 를 제거한다.
      */
     program = gl.createProgram();
-    if (!program)
-        return;
+    if (!program) return;
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
