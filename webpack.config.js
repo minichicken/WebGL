@@ -6,7 +6,7 @@ const config = {
         FirstWeek: './FirstWeek/main.ts',
         ThirdWeek: './ThirdWeek/main.ts',
     },
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     module: {
       rules: [
         {
