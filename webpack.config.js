@@ -1,27 +1,38 @@
+"use strict";
 const path = require("path");
 
-const config = {
-    entry: {
-        FirstWeek: './FirstWeek/main.ts',
-        ThirdWeek: './ThirdWeek/main.ts',
-    },
-    devtool: 'source-map',
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: /node_modules/
-        }
-      ]
-    },
-    resolve: {
-      extensions: [ '.tsx', '.ts', '.js' ]
-    },
-    output: {
-      filename: '[name].js',
-      path: path.resolve(__dirname, 'dist')
-    }
+const defaultConfig = {
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
+  }
 };
 
-module.exports = config;
+const firstWeekConfig = {
+  entry: {
+    FirstWeek: './FirstWeek/main.ts',
+  },
+  ...defaultConfig
+};
+
+const thirdWeekConfig = {
+  entry: {
+    ThirdWeek: './ThirdWeek/main.ts',
+  },
+  ...defaultConfig
+};
+
+module.exports = [firstWeekConfig, thirdWeekConfig];
