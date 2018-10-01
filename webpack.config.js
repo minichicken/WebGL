@@ -6,6 +6,10 @@ const defaultConfig = {
   module: {
     rules: [
       {
+        test: /\.(txt|vert|frag)$/,
+        use: 'raw-loader'
+      },
+      {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/

@@ -1,3 +1,6 @@
+import vert from "./vertex.vert";
+import frag from "./fragment.frag";
+
 let gl: WebGLRenderingContext | null, program: WebGLProgram | null, buffer: WebGLBuffer | null;
 
 const paragraph = document.querySelector("p") as HTMLParagraphElement;
@@ -32,15 +35,12 @@ function setupWebGL(evt: Event): void {
     gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-    let source = document.querySelector("#vertex-shader") as HTMLScriptElement;
     let vertexShader = gl.createShader(gl.VERTEX_SHADER) as WebGLShader;
-    gl.shaderSource(vertexShader, source.innerHTML);
+    gl.shaderSource(vertexShader, vert);
     gl.compileShader(vertexShader);
-    source = document.querySelector("#fragment-shader") as HTMLScriptElement;
     let fragmentShader = gl.createShader(gl.FRAGMENT_SHADER) as WebGLShader;
-    gl.shaderSource(fragmentShader, source.innerHTML);
+    gl.shaderSource(fragmentShader, frag);
     gl.compileShader(fragmentShader);
-    // @ts-ignore
     /**
      * shader 를 사용하기 위한 프로그램을 생성한다.
      * 프로그램에 컴파일한 shader 를 붙인다.
