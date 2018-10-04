@@ -2,41 +2,49 @@
 const path = require("path");
 
 const defaultConfig = {
-  devtool: 'source-map',
-  module: {
-    rules: [
-      {
-        test: /\.(txt|vert|frag)$/,
-        use: 'raw-loader'
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js']
-  },
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    devtool: 'inline-source-map',
+    module: {
+        rules: [
+            {
+                test: /\.(txt|vert|frag)$/,
+                use: 'raw-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            }
+        ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js']
+    },
+    output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist')
+    }
 };
 
 const firstWeekConfig = {
-  entry: {
-    FirstWeek: './FirstWeek/main.ts',
-  },
-  ...defaultConfig
+    entry: {
+        FirstWeek: './FirstWeek/main.ts'
+    },
+    ...defaultConfig
 };
 
 const thirdWeekConfig = {
-  entry: {
-    ThirdWeek: './ThirdWeek/main.ts',
-  },
-  ...defaultConfig
+    entry: {
+        ThirdWeek: './ThirdWeek/main.ts'
+    },
+    ...defaultConfig
 };
 
-module.exports = [firstWeekConfig, thirdWeekConfig];
+const fourthWeekConfig = {
+    entry: {
+        FourthWeek: './FourthWeek/main.ts'
+    },
+    ...defaultConfig
+};
+
+module.exports = [firstWeekConfig, thirdWeekConfig, fourthWeekConfig];

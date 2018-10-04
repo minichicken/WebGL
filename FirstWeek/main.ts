@@ -1,4 +1,5 @@
-let gl: WebGLRenderingContext | null, timer, rainingRect: Rectangle, scoreDisplay: HTMLElement, missesDisplay: HTMLElement;
+let gl: WebGLRenderingContext | null, timer, rainingRect: Rectangle, scoreDisplay: HTMLElement,
+    missesDisplay: HTMLElement;
 
 const canvas: HTMLCanvasElement = document.querySelector("canvas") as HTMLCanvasElement;
 const paragraph: HTMLParagraphElement = document.querySelector("p") as HTMLParagraphElement;
@@ -16,7 +17,7 @@ function setupAnimation(evt: Event) {
      * canvas 에서 webgl context 를 가져온다.
      * 만약 가져오지 못한다면 experimental-webgl 을 가져온다.
      * 자바스크립트의 || 특성을 이용한 방식 ||문 앞이 undefined 아면 뒤 구문을 가져간다.
-     * 
+     *
      * webgl 미 지원시 p 태그를 가져와서 로두 살패를 알림.
      */
     gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
@@ -58,7 +59,8 @@ function setupAnimation(evt: Event) {
 /**
  * 점수 및 놓친 개수
  */
-var score = 0, misses = 0;
+let score = 0, misses = 0;
+
 function drawAnimation() {
     /**
      * 내려가는 객체의 색상을 빠져나오지 않도록 자른다.
@@ -79,12 +81,12 @@ function drawAnimation() {
 function playerClick(evt: MouseEvent) {
     if (!gl) return;
     const target = evt.target as HTMLElement;
-    var position = [
+    let position = [
         evt.pageX - target.offsetLeft,
         gl.drawingBufferHeight - (evt.pageY - target.offsetTop),
     ];
-    var diffPos = [position[0] - rainingRect.position[0],
-    position[1] - rainingRect.position[1]];
+    let diffPos = [position[0] - rainingRect.position[0],
+        position[1] - rainingRect.position[1]];
     if (diffPos[0] >= 0 && diffPos[0] < rainingRect.size[0] && diffPos[1] >= 0 && diffPos[1] < rainingRect.size[1]) {
         score += 1;
         scoreDisplay.innerHTML = score.toString();
@@ -97,34 +99,36 @@ class Rectangle {
     size!: number[];
     position!: number[];
     color!: number[];
+
     constructor() {
         /**
-         * react가 Reactangle을 가리키게 함
+         * react 가 Rectangle 을 가리키게 함
          * 램덤숫자 생성
          * 사각형 크기를 램덤값으로 지정
-         * 위치를 지정한다 
-         * 램덤값 *(canvas의 가로 - 사각형의 가로 값)
-         * gl.drawingBufferHeight canvas의 세로
+         * 위치를 지정한다
+         * 램덤값 *(canvas 의 가로 - 사각형의 가로 값)
+         * gl.drawingBufferHeight canvas 의 세로
          */
         if (!gl) return;
-        var rect = this; // Reactangle
-        var randNums = getRandomVector();
+        let rect = this; // Rectangle
+        let randNumbers = getRandomVector();
         rect.size = [
-            5 + 120 * randNums[0],
-            5 + 120 * randNums[1]
+            5 + 120 * randNumbers[0],
+            5 + 120 * randNumbers[1]
         ];
         rect.position = [
-            randNums[2] * (gl.drawingBufferWidth - rect.size[0]),
+            randNumbers[2] * (gl.drawingBufferWidth - rect.size[0]),
             gl.drawingBufferHeight
         ];
         /**
-         * 속도 지정 
+         * 속도 지정
          * 색상 램덤값 지정
          * 객체에 색상 램덤값 지정
          */
         rect.velocity = 1.0 + 6.0 * Math.random();
         rect.color = getRandomVector();
         gl.clearColor(rect.color[0], rect.color[1], rect.color[2], 1.0);
+
         /**
          * 램덤 숫자 배열 생성
          */
