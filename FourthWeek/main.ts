@@ -16,7 +16,7 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-    //
+    
     window.addEventListener('resize', onWindowResize, false);
 }
 function onWindowResize() {
