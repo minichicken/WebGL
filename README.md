@@ -17,3 +17,5 @@ https://webglfundamentals.org/webgl/lessons/webgl-3d-textures.html
 https://developer.mozilla.org/ko/docs/Web/API/WebGL_API/Tutorial/Adding_2D_content_to_a_WebGL_context
 
 https://thebookofshaders.com/04/?lan=kr
+
+http://webglsamples.org/WebGL2Samples/#transform_feedback_instanced

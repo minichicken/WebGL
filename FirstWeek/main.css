@@ -17,6 +17,7 @@ canvas {
   border : none;
   background-color : black;
 }
+
 button {
   display : block;
   font-size : inherit;

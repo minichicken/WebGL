@@ -47,4 +47,11 @@ const fourthWeekConfig = {
     ...defaultConfig
 };
 
-module.exports = [firstWeekConfig, thirdWeekConfig, fourthWeekConfig];
+const splitTheeJSWebGL2Config = {
+    entry: {
+        SplitThreeJSWebGL2: './SplitThreejsWebGL2/main.ts'
+    },
+    ...defaultConfig
+}
+
+module.exports = [firstWeekConfig, thirdWeekConfig, fourthWeekConfig, splitTheeJSWebGL2Config];

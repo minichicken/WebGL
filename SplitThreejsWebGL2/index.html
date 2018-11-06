@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Split ThreeJS WebGL 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script id="vs" type="x-shader/x-vertex">
+        #version 300 es
+        
+        void main() {
+        
+            gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        
+        }
+    </script>
+    <script id="fs" type="x-shader/x-fragment">
+        #version 300 es
+        
+        precision highp float;
+        precision highp int;
+        out vec4 out_FragColor;
+        
+        void main() {
+        
+            out_FragColor = vec4( 1.0 );
+        
+        }
+    </script>
+    <script src="../dist/main.js"></script>
+</body>
+
+</html>
